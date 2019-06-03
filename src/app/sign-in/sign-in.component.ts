@@ -11,6 +11,6 @@ export class SignInComponent implements OnInit {
   constructor(private authService: AuthService) { }
 
   ngOnInit() {
-    this.authService.signIn('', '');
+    this.authService.signIn('admin', 'password').subscribe(response => console.log(response));
   }
 }
