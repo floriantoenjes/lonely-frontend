@@ -1,14 +1,21 @@
-<form [formGroup]="form" fxLayout="column">
+<form [formGroup]="form"
+      fxLayout="column">
     <mat-form-field>
-        <input type="text" matInput placeholder="Vorname">
+        <input type="text"
+               matInput
+               placeholder="Vorname">
     </mat-form-field>
 
     <mat-form-field>
-        <input type="text" matInput placeholder="Nachname">
+        <input type="text"
+               matInput
+               placeholder="Nachname">
     </mat-form-field>
 
     <mat-form-field>
-        <input type="text" matInput placeholder="Ort">
+        <input type="text"
+               matInput
+               placeholder="Ort">
     </mat-form-field>
 
     <mat-select placeholder="Geschlecht">
@@ -17,13 +24,20 @@
     </mat-select>
 
     <mat-form-field>
-        <input matInput [matDatepicker]="picker" placeholder="Geburtstag">
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <input matInput
+               [matDatepicker]="picker"
+               placeholder="Geburtstag">
+        <mat-datepicker-toggle matSuffix
+                               [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
 
     <mat-form-field>
-        <textarea matInput placeholder="Über dich"></textarea>
+        <textarea matInput
+                  placeholder="Über dich"
+                  rows="3"></textarea>
     </mat-form-field>
+
+    <button mat-button>Profil speichern</button>
 
 </form>
