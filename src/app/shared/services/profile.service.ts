@@ -2,17 +2,18 @@ import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Profile } from '../models/profile';
+import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class ProfileService {
 
-  constructor(
-    private http: HttpClient
-  ) { }
+    constructor(
+        private http: HttpClient
+    ) { }
 
-  saveProfile(profile: Profile): void {
-    this.http.post(`${environment.basePath}/profile`, profile).subscribe();
-  }
+    saveProfile(profile: Profile): Observable<Profile> {
+        return this.http.post<Profile>(`${environment.basePath}/profile`, profile);
+    }
 }
