@@ -1,1 +1,29 @@
-<p>Profile works</p>
+<form [formGroup]="form" fxLayout="column">
+    <mat-form-field>
+        <input type="text" matInput placeholder="Vorname">
+    </mat-form-field>
+
+    <mat-form-field>
+        <input type="text" matInput placeholder="Nachname">
+    </mat-form-field>
+
+    <mat-form-field>
+        <input type="text" matInput placeholder="Ort">
+    </mat-form-field>
+
+    <mat-select placeholder="Geschlecht">
+        <mat-option value="male">Männlich</mat-option>
+        <mat-option value="female">Weiblich</mat-option>
+    </mat-select>
+
+    <mat-form-field>
+        <input matInput [matDatepicker]="picker" placeholder="Geburtstag">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field>
+        <textarea matInput placeholder="Über dich"></textarea>
+    </mat-form-field>
+
+</form>

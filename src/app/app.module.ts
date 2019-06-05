@@ -2,8 +2,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatButtonModule} from '@angular/material/button';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatInputModule } from '@angular/material/input';
+import { MatMomentDateModule } from '@angular/material-moment-adapter';
+import { MatSelectModule } from '@angular/material/select';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -21,9 +25,13 @@ import { ReactiveFormsModule } from '@angular/forms';
     AppRoutingModule,
     BrowserAnimationsModule,
     BrowserModule,
+    FlexLayoutModule,
     HttpClientModule,
     MatButtonModule,
+    MatDatepickerModule,
     MatInputModule,
+    MatMomentDateModule,
+    MatSelectModule,
     ReactiveFormsModule
   ],
   providers: [],
