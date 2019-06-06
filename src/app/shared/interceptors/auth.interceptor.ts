@@ -5,7 +5,9 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class AuthInterceptor implements HttpInterceptor {
 
   private noAuthRoutes = [
@@ -16,7 +18,7 @@ export class AuthInterceptor implements HttpInterceptor {
   }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    const route = req.url.replace(environment.basePath, '');
+    const route = req.url.replace(environment.authBasePath, '');
 
     if (!this.noAuthRoutes.includes(route)) {
 

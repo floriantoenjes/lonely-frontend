@@ -1,3 +1,4 @@
+import { GeoLocation } from './geoLocation';
 
 enum Sex {
     male,
@@ -13,7 +14,7 @@ export class Profile {
 
     private lastName: string;
 
-    private location: Location;
+    private location: GeoLocation;
 
     private sex: Sex;
 

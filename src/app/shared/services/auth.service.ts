@@ -19,7 +19,7 @@ export class AuthService {
 
     const credentials = `grant_type=password&username=${username}&password=${password}`;
 
-    return this.http.post(`${environment.basePath}/oauth/token`, credentials, {
+    return this.http.post(`${environment.authBasePath}/oauth/token`, credentials, {
       headers,
       observe: 'response'
     }).pipe(
