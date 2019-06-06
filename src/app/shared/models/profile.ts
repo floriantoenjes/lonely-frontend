@@ -1,26 +1,26 @@
 import { GeoLocation } from './geoLocation';
 
 enum Sex {
-    male,
-    female
+    MALE,
+    FEMALE
 }
 
 export class Profile {
-    private id: string;
+    id: string;
 
-    private userId: string;
+    userId: string;
 
-    private firstName: string;
+    firstName: string;
 
-    private lastName: string;
+    lastName: string;
 
-    private location: GeoLocation;
+    location: GeoLocation;
 
-    private sex: Sex;
+    sex: Sex;
 
-    private birthDate: Date;
+    birthDate: Date;
 
-    private pictureURL: string;
+    pictureURL: string;
 
-    private description: string;
+    description: string;
 }

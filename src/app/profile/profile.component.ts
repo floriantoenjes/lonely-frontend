@@ -2,6 +2,7 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { ProfileService } from '../shared/services/profile.service';
 import { Profile } from '../shared/models/profile';
+import { GeoLocation } from '../shared/models/geoLocation';
 
 @Component({
     selector: 'app-profile',
@@ -31,6 +32,8 @@ export class ProfileComponent implements OnInit {
 
     saveProfile(): void {
         const profile = this.form.value as Profile;
+        profile.location = new GeoLocation(1, 1);
+
         this.profileService.saveProfile(profile).subscribe();
     }
 

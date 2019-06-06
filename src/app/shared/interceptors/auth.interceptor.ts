@@ -5,12 +5,11 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class AuthInterceptor implements HttpInterceptor {
 
   private noAuthRoutes = [
+    '/oauth/token',
     '/sign-in'
   ];
 
@@ -23,7 +22,7 @@ export class AuthInterceptor implements HttpInterceptor {
     if (!this.noAuthRoutes.includes(route)) {
 
       const authReq = req.clone({
-        headers: req.headers.set('Authorization', this.authService.getToken())
+        headers: req.headers.set('Authorization', `Bearer ${this.authService.getToken()}`)
       });
 
       return next.handle(authReq);
