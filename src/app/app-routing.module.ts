@@ -7,7 +7,10 @@ import { SignedOutGuard } from './shared/guards/signed-out.guard';
 
 const routes: Routes = [
   { path: 'sign-in', component: SignInComponent, canActivate: [SignedOutGuard] },
+
   { path: 'profile', component: ProfileComponent, canActivate: [SignedInGuard] },
+  { path: 'lonely', component: ProfileComponent, canActivate: [SignedInGuard] },
+
   { path: '', redirectTo: 'profile', pathMatch: 'full' }
 ];
 

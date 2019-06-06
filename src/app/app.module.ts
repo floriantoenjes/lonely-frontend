@@ -15,12 +15,14 @@ import { SignInComponent } from './sign-in/sign-in.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
+import { LonelyComponent } from './lonely/lonely.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SignInComponent,
-    ProfileComponent
+    ProfileComponent,
+    LonelyComponent
   ],
   imports: [
     AppRoutingModule,
