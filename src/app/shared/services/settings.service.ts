@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 @Injectable({
     providedIn: 'root'
 })
-export class LonelyService {
+export class SettingsService {
 
     constructor(
         private http: HttpClient

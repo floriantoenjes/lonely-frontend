@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { LonelyService } from './lonely.service';
+import { SettingsService } from './settings.service';
 
 describe('LonelyService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: LonelyService = TestBed.get(LonelyService);
+    const service: SettingsService = TestBed.get(SettingsService);
     expect(service).toBeTruthy();
   });
 });
