@@ -1,3 +1,29 @@
-<p>
-  lonely works!
-</p>
+<form [formGroup]="form"
+      fxLayout="column">
+    <button mat-button>Ich bin heute einsam</button>
+
+    <div fxLayout="row" fxLayoutAlign="space-between">
+        <mat-form-field>
+            <input matInput
+                   type="number"
+                   placeholder="Alter von"
+                   formControlName="meetUpAgeFrom">
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput
+                   type="number"
+                   placeholder="Alter bis"
+                   formControlName="meetUpAgeTo">
+        </mat-form-field>
+    </div>
+
+    <mat-form-field>
+        <input matInput
+               type="number"
+               placeholder="Radius"
+               formControlName="radius">
+    </mat-form-field>
+
+    <button mat-button>Speichern</button>
+</form>

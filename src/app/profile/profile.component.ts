@@ -9,7 +9,7 @@ import { GeoLocation } from '../shared/models/geoLocation';
     templateUrl: './profile.component.html',
     styleUrls: ['./profile.component.scss']
 })
-export class ProfileComponent implements OnInit {
+export class ProfileComponent {
 
     form: FormGroup;
 
@@ -25,9 +25,6 @@ export class ProfileComponent implements OnInit {
             birthDate: [],
             description: ['']
         });
-    }
-
-    ngOnInit() {
     }
 
     saveProfile(): void {
