@@ -4,6 +4,10 @@
             mat-button
             (click)="setLonely()">Ich bin heute einsam</button>
 
+    <button *ngIf="isLonely()"
+            mat-button
+            (click)="unsetLonely()">Ich bin nicht mehr einsam</button>
+
     <ng-container *ngIf="isLonely()">
         <div fxLayout="row"
              fxLayoutAlign="space-between">

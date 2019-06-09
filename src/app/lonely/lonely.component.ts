@@ -10,13 +10,13 @@ import * as moment from 'moment';
     templateUrl: './lonely.component.html',
     styleUrls: ['./lonely.component.scss']
 })
-export class LonelyComponent {
+export class LonelyComponent implements OnInit {
 
     form: FormGroup;
 
     constructor(
         private fb: FormBuilder,
-        private lonelyService: SettingsService
+        private settingsService: SettingsService
     ) {
         this.form = this.fb.group({
             lonelyDateTime: [],
@@ -26,9 +26,21 @@ export class LonelyComponent {
         });
     }
 
+    ngOnInit(): void {
+        this.settingsService.getSettings().subscribe(settings => {
+            this.form.patchValue(settings);
+        });
+    }
+
     setLonely(): void {
         this.form.patchValue({
             lonelyDateTime: moment()
+        });
+    }
+
+    unsetLonely(): void {
+        this.form.patchValue({
+            lonelyDateTime: null
         });
     }
 
@@ -39,7 +51,7 @@ export class LonelyComponent {
     saveSettings(): void {
         const settings = this.form.value as Settings;
 
-        this.lonelyService.saveSettings(settings).subscribe();
+        this.settingsService.saveSettings(settings).subscribe();
     }
 
 }

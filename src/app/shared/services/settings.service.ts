@@ -16,4 +16,8 @@ export class SettingsService {
     saveSettings(settings: Settings): Observable<Settings> {
         return this.http.post<Settings>(`${environment.resourceBasePath}/settings`, settings);
     }
+
+    getSettings(): Observable<Settings> {
+        return this.http.get<Settings>(`${environment.resourceBasePath}/settings/my-settings`);
+    }
 }
