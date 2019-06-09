@@ -4,6 +4,9 @@ import { SettingsService } from '../shared/services/settings.service';
 import { Settings } from '../shared/models/settings';
 
 import * as moment from 'moment';
+import { Profile } from '../shared/models/profile';
+import { Observable } from 'rxjs';
+import { LonelyService } from '../shared/services/lonely.service';
 
 @Component({
     selector: 'app-settings',
@@ -14,8 +17,11 @@ export class LonelyComponent implements OnInit {
 
     form: FormGroup;
 
+    lonelyPeople$: Observable<Profile[]>;
+
     constructor(
         private fb: FormBuilder,
+        private lonelyService: LonelyService,
         private settingsService: SettingsService
     ) {
         this.form = this.fb.group({
@@ -31,6 +37,8 @@ export class LonelyComponent implements OnInit {
         this.settingsService.getSettings().subscribe(settings => {
             this.form.patchValue(settings);
         });
+
+        this.lonelyPeople$ = this.lonelyService.getLonelyPeople();
     }
 
     setLonely(): void {
