@@ -5,8 +5,10 @@ import { Settings } from '../shared/models/settings';
 
 import * as moment from 'moment';
 import { Profile } from '../shared/models/profile';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { LonelyService } from '../shared/services/lonely.service';
+import { catchError } from 'rxjs/operators';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
     selector: 'app-settings',
@@ -34,7 +36,13 @@ export class LonelyComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.settingsService.getSettings().subscribe(settings => {
+        this.settingsService.getSettings().pipe(catchError((error: HttpErrorResponse) => {
+            if (error.status === 404) {
+                return of({});
+            } else {
+                throw error;
+            }
+        })).subscribe((settings: Settings) => {
             this.form.patchValue(settings);
         });
 
