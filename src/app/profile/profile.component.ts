@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { ProfileService } from '../shared/services/profile.service';
 import { Profile } from '../shared/models/profile';
 import { GeoLocation } from '../shared/models/geoLocation';
+import { HttpResponse } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-profile',
@@ -15,7 +17,8 @@ export class ProfileComponent {
 
     constructor(
         private fb: FormBuilder,
-        private profileService: ProfileService
+        private profileService: ProfileService,
+        private router: Router
     ) {
         this.form = this.fb.group({
             firstName: [''],
@@ -31,7 +34,11 @@ export class ProfileComponent {
         const profile = this.form.value as Profile;
         profile.location = new GeoLocation(1, 1);
 
-        this.profileService.saveProfile(profile).subscribe();
+        this.profileService.saveProfile(profile).subscribe((profileResponse: Profile) => {
+            if (profileResponse) {
+                this.router.navigate(['/lonely']);
+            }
+        });
     }
 
 }
