@@ -5,8 +5,10 @@ import { Routes, RouterModule } from '@angular/router';
 import { SignedInGuard } from './shared/guards/signed-in.guard';
 import { SignedOutGuard } from './shared/guards/signed-out.guard';
 import { LonelyComponent } from './lonely/lonely.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
 
 const routes: Routes = [
+  { path: 'sign-up', component: SignUpComponent, canActivate: [SignedOutGuard] },
   { path: 'sign-in', component: SignInComponent, canActivate: [SignedOutGuard] },
 
   { path: 'profile', component: ProfileComponent, canActivate: [SignedInGuard] },

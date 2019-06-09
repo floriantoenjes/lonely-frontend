@@ -11,6 +11,13 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
+  signUp(username: string, password: string): Observable<any> {
+    return this.http.post(`${environment.authBasePath}/sign-up`, {
+      username,
+      password
+    });
+  }
+
   signIn(username: string, password: string): Observable<any> {
     const headers = new HttpHeaders({
       'Content-type': 'application/x-www-form-urlencoded',

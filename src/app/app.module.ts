@@ -16,13 +16,15 @@ import { ProfileComponent } from './profile/profile.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
 import { LonelyComponent } from './lonely/lonely.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SignInComponent,
     ProfileComponent,
-    LonelyComponent
+    LonelyComponent,
+    SignUpComponent
   ],
   imports: [
     AppRoutingModule,
