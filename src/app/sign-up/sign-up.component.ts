@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { AuthService } from '../shared/services/auth.service';
+import { HttpResponse } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-sign-up',
@@ -12,9 +14,10 @@ export class SignUpComponent {
 
     constructor(
         private authService: AuthService,
-        private fb: FormBuilder
+        private fb: FormBuilder,
+        private router: Router
     ) {
-        this.form = fb.group({
+        this.form = this.fb.group({
             username: [''],
             password: [''],
             password2: ['']
@@ -22,6 +25,10 @@ export class SignUpComponent {
     }
 
     signUp() {
-        this.authService.signUp(this.form.value.username, this.form.value.password).subscribe();
+        this.authService.signUp(this.form.value.username, this.form.value.password).subscribe((response: HttpResponse<any>) => {
+            if (response.ok) {
+                this.router.navigate(['/sign-in']);
+            }
+        });
     }
 }
