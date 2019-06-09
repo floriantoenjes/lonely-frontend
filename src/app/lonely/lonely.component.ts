@@ -37,12 +37,14 @@ export class LonelyComponent implements OnInit {
         this.form.patchValue({
             lonelyDateTime: moment()
         });
+        this.saveSettings();
     }
 
     unsetLonely(): void {
         this.form.patchValue({
             lonelyDateTime: null
         });
+        this.saveSettings();
     }
 
     isLonely(): boolean {
