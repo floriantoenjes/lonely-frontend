@@ -2,11 +2,13 @@
       fxLayout="column">
     <button *ngIf="!isLonely()"
             mat-button
-            (click)="setLonely()">Ich bin heute einsam</button>
+            (click)="setLonely()"
+            class="lonely-btn">Ich bin heute einsam</button>
 
     <button *ngIf="isLonely()"
             mat-button
-            (click)="unsetLonely()">Ich bin nicht mehr einsam</button>
+            (click)="unsetLonely()"
+            class="lonely-btn">Ich bin nicht mehr einsam</button>
 
     <ng-container *ngIf="isLonely()">
         <div fxLayout="row"

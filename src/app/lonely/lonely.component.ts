@@ -19,6 +19,7 @@ export class LonelyComponent implements OnInit {
         private settingsService: SettingsService
     ) {
         this.form = this.fb.group({
+            id: [],
             lonelyDateTime: [],
             radius: [],
             meetUpAgeFrom: [],
