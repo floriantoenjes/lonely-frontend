@@ -16,4 +16,8 @@ export class ProfileService {
     saveProfile(profile: Profile): Observable<Profile> {
         return this.http.post<Profile>(`${environment.resourceBasePath}/profile`, profile);
     }
+
+    getProfile(): Observable<Profile> {
+        return this.http.get<Profile>(`${environment.resourceBasePath}/profile/my-profile`);
+    }
 }
