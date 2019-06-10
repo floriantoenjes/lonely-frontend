@@ -8,6 +8,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { MatSelectModule } from '@angular/material/select';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { AgmCoreModule } from '@agm/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,32 +19,36 @@ import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
 import { LonelyComponent } from './lonely/lonely.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { LonelyPersonComponent } from './lonely/lonely-person/lonely-person.component';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    SignInComponent,
-    ProfileComponent,
-    LonelyComponent,
-    SignUpComponent,
-    LonelyPersonComponent
-  ],
-  imports: [
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    BrowserModule,
-    FlexLayoutModule,
-    HttpClientModule,
-    MatButtonModule,
-    MatDatepickerModule,
-    MatInputModule,
-    MatMomentDateModule,
-    MatSelectModule,
-    ReactiveFormsModule
-  ],
-  providers: [
-    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
-  ],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        SignInComponent,
+        ProfileComponent,
+        LonelyComponent,
+        SignUpComponent,
+        LonelyPersonComponent
+    ],
+    imports: [
+        AgmCoreModule.forRoot({
+            apiKey: environment.googleAPIKey
+        }),
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        BrowserModule,
+        FlexLayoutModule,
+        HttpClientModule,
+        MatButtonModule,
+        MatDatepickerModule,
+        MatInputModule,
+        MatMomentDateModule,
+        MatSelectModule,
+        ReactiveFormsModule
+    ],
+    providers: [
+        { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    ],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }

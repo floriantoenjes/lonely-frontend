@@ -6,7 +6,9 @@ export const environment = {
   production: false,
 
   authBasePath: 'http://localhost:8080',
-  resourceBasePath: 'http://localhost:3200'
+  resourceBasePath: 'http://localhost:3200',
+
+  googleAPIKey: 'AIzaSyAu_4TImdRG2Hn9fyD1OCkj_Wk2L9b9UH8'
 };
 
 /*
