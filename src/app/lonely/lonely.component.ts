@@ -43,9 +43,10 @@ export class LonelyComponent implements OnInit {
             }
         })).subscribe((settings: Settings) => {
             this.form.patchValue(settings);
+            if (this.isLonely()) {
+                this.lonelyPeople$ = this.lonelyService.getLonelyPeople();
+            }
         });
-
-        this.lonelyPeople$ = this.lonelyService.getLonelyPeople();
     }
 
     setLonely(): void {
