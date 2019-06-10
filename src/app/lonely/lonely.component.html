@@ -38,9 +38,8 @@
         <button mat-button
                 (click)="saveSettings()">Aktualisieren</button>
 
-        <h2>Einsame</h2>
-        <p *ngFor="let lonelyPerson of lonelyPeople$ | async">
-            Test
-        </p>
+        <h3>Einsame Personen</h3>
+        <app-lonely-person *ngFor="let lonelyPerson of lonelyPeople$ | async"
+                           [profile]="lonelyPerson"></app-lonely-person>
     </ng-container>
 </form>

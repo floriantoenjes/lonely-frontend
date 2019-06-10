@@ -70,7 +70,7 @@ export class LonelyComponent implements OnInit {
     saveSettings(): void {
         const settings = this.form.value as Settings;
 
-        this.settingsService.saveSettings(settings).subscribe();
+        this.settingsService.saveSettings(settings).subscribe(() => this.lonelyPeople$ = this.lonelyService.getLonelyPeople());
     }
 
 }
