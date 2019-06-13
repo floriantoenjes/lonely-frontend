@@ -24,7 +24,7 @@ export class ProfileComponent implements OnInit {
         this.form = this.fb.group({
             firstName: [''],
             lastName: [''],
-            location: [''],
+            city: [''],
             sex: [],
             birthDate: [],
             description: ['']
@@ -40,7 +40,7 @@ export class ProfileComponent implements OnInit {
     saveProfile(): void {
         const profile = this.form.value as Profile;
 
-        this.geocodeService.getCoordinates(this.form.value.location).subscribe((geoLocation: GeoLocation) => {
+        this.geocodeService.getCoordinates(this.form.value.city).subscribe((geoLocation: GeoLocation) => {
 
             profile.location = geoLocation;
 

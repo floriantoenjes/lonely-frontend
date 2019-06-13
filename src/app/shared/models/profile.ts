@@ -10,6 +10,7 @@ export class Profile {
     userId: string;
     firstName: string;
     lastName: string;
+    city: string;
     location: GeoLocation;
     sex: Sex;
     birthDate: Date;
