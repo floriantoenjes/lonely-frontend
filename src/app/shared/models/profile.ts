@@ -7,7 +7,7 @@ enum Sex {
 
 export class Profile {
     id: string;
-    userId: string;
+    username: string;
     firstName: string;
     lastName: string;
     city: string;

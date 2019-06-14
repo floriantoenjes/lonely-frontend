@@ -20,6 +20,7 @@ import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
 import { LonelyComponent } from './lonely/lonely.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { LonelyPersonComponent } from './lonely/lonely-person/lonely-person.component';
+import { ChatComponent } from './chat/chat.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
     return new TranslateHttpLoader(http);
@@ -32,7 +33,8 @@ export function HttpLoaderFactory(http: HttpClient) {
         ProfileComponent,
         LonelyComponent,
         SignUpComponent,
-        LonelyPersonComponent
+        LonelyPersonComponent,
+        ChatComponent
     ],
     imports: [
         AppRoutingModule,
