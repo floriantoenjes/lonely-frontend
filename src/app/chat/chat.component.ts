@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { EventSourcePolyfill } from 'ng-event-source';
 import { AuthService } from '../shared/services/auth.service';
 import { Message } from '../shared/models/message';
+import { environment } from 'src/environments/environment';
 
 @Component({
     selector: 'app-chat',
@@ -10,14 +11,18 @@ import { Message } from '../shared/models/message';
 })
 export class ChatComponent implements OnInit {
 
-    messages: Message[] =  [];
+    messages: Message[] = [];
 
     constructor(
         private authService: AuthService
     ) { }
 
     ngOnInit() {
-        const source = new EventSourcePolyfill('http://localhost:5200/stream-sse', {
+        this.initSSE();
+    }
+
+    initSSE(): void {
+        const source = new EventSourcePolyfill(`${environment.chatBasePath}/stream-sse`, {
             headers: {
                 Authorization: `Bearer ${this.authService.getToken()}`
             }

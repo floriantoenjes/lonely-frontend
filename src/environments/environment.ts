@@ -7,6 +7,7 @@ export const environment = {
 
   authBasePath: 'http://localhost:8080',
   resourceBasePath: 'http://localhost:3200',
+  chatBasePath: 'http://localhost:5200'
 };
 
 /*
