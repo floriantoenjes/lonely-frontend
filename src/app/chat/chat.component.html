@@ -1,6 +1,21 @@
 <h2>Nachrichten von {{ contactName }}:</h2>
 
-<div *ngFor="let message of messages" fxLayout="row">
-    <p>{{ message.sentAt | date: 'medium'}}</p>
+<div *ngFor="let message of messages"
+     fxLayout="row"
+     class="messages">
+    <p>{{ message.sentAt | date: 'shortTime'}}</p>
     <p>{{ message.message }}</p>
 </div>
+
+<form [formGroup]="form"
+      (submit)="sendMessage()">
+    <mat-form-field>
+        <input matInput
+               type="text"
+               placeholder="Nachricht..."
+               formControlName="message">
+    </mat-form-field>
+
+    <button mat-button
+            type="submit">Senden</button>
+</form>

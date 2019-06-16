@@ -16,4 +16,10 @@ export class ChatService {
     getMessagesByContactName(contactName: string): Observable<Message[]> {
         return this.http.get<Message[]>(`${environment.chatBasePath}/messages/${contactName}`);
     }
+
+    sendMessage(contactName: string, message: string): Observable<any> {
+        return this.http.post(`${environment.chatBasePath}/send/${contactName}`, {
+            message
+        });
+    }
 }
