@@ -3,6 +3,8 @@ import { EventSourcePolyfill } from 'ng-event-source';
 import { AuthService } from '../shared/services/auth.service';
 import { Message } from '../shared/models/message';
 import { environment } from 'src/environments/environment';
+import { ChatService } from '../shared/services/chat.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
     selector: 'app-chat',
@@ -11,14 +13,23 @@ import { environment } from 'src/environments/environment';
 })
 export class ChatComponent implements OnInit {
 
+    contactName: string;
     messages: Message[] = [];
 
     constructor(
-        private authService: AuthService
+        private activatedRoute: ActivatedRoute,
+        private authService: AuthService,
+        private chatService: ChatService
     ) { }
 
     ngOnInit() {
-        this.initSSE();
+        this.activatedRoute.paramMap.subscribe(params => {
+            this.contactName = params.get('contactName');
+            this.chatService.getMessagesByContactName(this.contactName).subscribe(messages => {
+                this.messages = messages;
+                this.initSSE();
+            });
+        });
     }
 
     initSSE(): void {

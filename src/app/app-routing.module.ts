@@ -14,7 +14,7 @@ const routes: Routes = [
 
   { path: 'profile', component: ProfileComponent, canActivate: [SignedInGuard] },
   { path: 'lonely', component: LonelyComponent, canActivate: [SignedInGuard] },
-  { path: 'chat/:username', component: ChatComponent, canActivate: [SignedInGuard] },
+  { path: 'chat/:contactName', component: ChatComponent, canActivate: [SignedInGuard] },
 
   { path: '', redirectTo: 'profile', pathMatch: 'full' }
 ];
