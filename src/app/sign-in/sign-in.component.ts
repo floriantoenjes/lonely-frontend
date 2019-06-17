@@ -27,7 +27,7 @@ export class SignInComponent {
   signIn() {
     this.authService.signIn(this.form.value.username, this.form.value.password).subscribe((response: HttpResponse<any>) => {
       if (response.ok) {
-        this.router.navigate(['profile']);
+        this.router.navigate(['lonely']);
       }
     });
   }

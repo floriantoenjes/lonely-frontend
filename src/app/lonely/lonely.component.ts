@@ -64,7 +64,7 @@ export class LonelyComponent implements OnInit {
     }
 
     isLonely(): boolean {
-        return moment().diff(this.form.value.lonelyDateTime, 'days') < 1;
+        return moment().isSame(this.form.value.lonelyDateTime, 'day');
     }
 
     saveSettings(): void {
