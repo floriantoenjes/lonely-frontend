@@ -16,7 +16,7 @@ const routes: Routes = [
   { path: 'lonely', component: LonelyComponent, canActivate: [SignedInGuard] },
   { path: 'chat/:contactName', component: ChatComponent, canActivate: [SignedInGuard] },
 
-  { path: '', redirectTo: 'profile', pathMatch: 'full' }
+  { path: '', redirectTo: 'lonely', pathMatch: 'full' }
 ];
 
 @NgModule({

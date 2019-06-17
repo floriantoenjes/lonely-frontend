@@ -49,7 +49,10 @@ export class ChatComponent implements OnInit {
 
         source.onmessage = e => {
             console.log(e);
-            this.messages.push(JSON.parse(e.data));
+            const message = JSON.parse(e.data) as Message;
+            if (!message.heartbeat && !this.messageAlreadyReceived(message)) {
+                this.messages.push(message);
+            }
         };
 
         source.onopen = a => console.log('Opened', a);
@@ -61,6 +64,10 @@ export class ChatComponent implements OnInit {
 
     sendMessage(): void {
         this.chatService.sendMessage(this.contactName, this.form.value.message).subscribe();
+    }
+
+    messageAlreadyReceived(message: Message): boolean {
+        return this.messages.filter(msg => msg.id === message.id).length > 0;
     }
 
 }
