@@ -1,5 +1,4 @@
-<form [formGroup]="form"
-      fxLayout="column">
+<div class="lonely-btn-group">
     <button *ngIf="!isLonely()"
             mat-button
             (click)="setLonely()"
@@ -9,6 +8,11 @@
             mat-button
             (click)="unsetLonely()"
             class="lonely-btn">Ich bin nicht mehr einsam</button>
+</div>
+
+<form [formGroup]="form"
+      (submit)="saveSettings()"
+      fxLayout="column">
 
     <ng-container *ngIf="isLonely()">
         <div fxLayout="row"
@@ -36,7 +40,7 @@
         </mat-form-field>
 
         <button mat-button
-                (click)="saveSettings()">Aktualisieren</button>
+                type="submit">Aktualisieren</button>
 
         <h3>Einsame Personen</h3>
         <app-lonely-person *ngFor="let lonelyPerson of lonelyPeople$ | async"
