@@ -1,20 +1,20 @@
 <ul>
     <li *ngIf="!isUserSignedIn">
-        <a routerLink="/sign-up">Sign Up</a>
+        <a routerLink="/sign-up">Registrieren</a>
     </li>
     <li *ngIf="!isUserSignedIn">
-        <a routerLink="/sign-in">Sign In</a>
+        <a routerLink="/sign-in">Anmelden</a>
     </li>
     <ng-container *ngIf="isUserSignedIn">
         <li>
             <a routerLink="/lonely">Lonely</a>
         </li>
         <li>
-            <a routerLink="/profile">Profile</a>
+            <a routerLink="/profile">Mein Profil</a>
         </li>
         <li>
             <a href=""
-               (click)="signOut()">Sign Out</a>
+               (click)="signOut()">Abmelden</a>
         </li>
     </ng-container>
 </ul>

@@ -18,7 +18,7 @@ export class NavComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.isUserSignedIn = this.authService.isSignedIn();
+    this.authService.isUserSignedIn$.subscribe(isUserSignedIn => this.isUserSignedIn = isUserSignedIn);
   }
 
   signOut(): void {
