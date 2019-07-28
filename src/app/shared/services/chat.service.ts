@@ -11,7 +11,7 @@ import { AuthService } from './auth.service';
 })
 export class ChatService {
 
-    receivedMessages$ = new Subject<Message>();
+    receivedMessage$ = new Subject<Message>();
 
     constructor(
         private authService: AuthService,
@@ -41,7 +41,7 @@ export class ChatService {
             console.log(e);
             const message = JSON.parse(e.data) as Message;
             if (!message.heartbeat) {
-                this.receivedMessages$.next(message);
+                this.receivedMessage$.next(message);
             }
         };
 

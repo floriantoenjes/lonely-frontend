@@ -40,7 +40,7 @@ export class ChatComponent implements OnInit {
 
             this.chatService.getMessagesByContactName(this.username).subscribe(messages => {
                 this.messages = messages;
-                this.chatService.receivedMessages$.subscribe(message => {
+                this.chatService.receivedMessage$.subscribe(message => {
                     if (!this.messageAlreadyReceived(message)) {
                         this.messages.push(message);
                     }
