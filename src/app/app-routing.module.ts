@@ -7,6 +7,7 @@ import { SignedOutGuard } from './shared/guards/signed-out.guard';
 import { LonelyComponent } from './lonely/lonely.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { ChatComponent } from './chat/chat.component';
+import { ContactsComponent } from './contacts/contacts.component';
 
 const routes: Routes = [
   { path: 'sign-up', component: SignUpComponent, canActivate: [SignedOutGuard] },
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'profile', component: ProfileComponent, canActivate: [SignedInGuard] },
   { path: 'lonely', component: LonelyComponent, canActivate: [SignedInGuard] },
   { path: 'chat/:contactName', component: ChatComponent, canActivate: [SignedInGuard] },
+  { path: 'contacts', component: ContactsComponent, canActivate: [SignedInGuard] },
 
   { path: '', redirectTo: 'lonely', pathMatch: 'full' }
 ];

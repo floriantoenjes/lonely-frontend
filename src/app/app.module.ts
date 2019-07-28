@@ -24,6 +24,7 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { LonelyPersonComponent } from './lonely/lonely-person/lonely-person.component';
 import { ChatComponent } from './chat/chat.component';
 import { NavComponent } from './nav/nav.component';
+import { ContactsComponent } from './contacts/contacts.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
     return new TranslateHttpLoader(http);
@@ -38,7 +39,8 @@ export function HttpLoaderFactory(http: HttpClient) {
         SignUpComponent,
         LonelyPersonComponent,
         ChatComponent,
-        NavComponent
+        NavComponent,
+        ContactsComponent
     ],
     imports: [
         AppRoutingModule,
