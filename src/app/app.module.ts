@@ -2,8 +2,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS, HttpClient } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatBadgeModule } from '@angular/material/badge';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { MatSelectModule } from '@angular/material/select';
@@ -44,8 +46,10 @@ export function HttpLoaderFactory(http: HttpClient) {
         BrowserModule,
         FlexLayoutModule,
         HttpClientModule,
+        MatBadgeModule,
         MatButtonModule,
         MatDatepickerModule,
+        MatIconModule,
         MatInputModule,
         MatMomentDateModule,
         MatSelectModule,
