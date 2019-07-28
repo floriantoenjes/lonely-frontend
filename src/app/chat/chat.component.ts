@@ -6,6 +6,9 @@ import { environment } from 'src/environments/environment';
 import { ChatService } from '../shared/services/chat.service';
 import { ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder } from '@angular/forms';
+import { Profile } from '../shared/models/profile';
+import { Observable } from 'rxjs';
+import { ProfileService } from '../shared/services/profile.service';
 
 @Component({
     selector: 'app-chat',
@@ -13,7 +16,9 @@ import { FormGroup, FormBuilder } from '@angular/forms';
     styleUrls: ['./chat.component.scss']
 })
 export class ChatComponent implements OnInit {
-    contactName: string;
+    username: string;
+
+    contactProfile$: Observable<Profile>;
 
     form: FormGroup;
 
@@ -23,7 +28,8 @@ export class ChatComponent implements OnInit {
         private activatedRoute: ActivatedRoute,
         private authService: AuthService,
         private chatService: ChatService,
-        private fb: FormBuilder
+        private fb: FormBuilder,
+        private profileService: ProfileService
     ) {
         this.form = this.fb.group({
             message: ['']
@@ -32,8 +38,11 @@ export class ChatComponent implements OnInit {
 
     ngOnInit() {
         this.activatedRoute.paramMap.subscribe(params => {
-            this.contactName = params.get('contactName');
-            this.chatService.getMessagesByContactName(this.contactName).subscribe(messages => {
+            this.username = params.get('contactName');
+
+            this.contactProfile$ = this.profileService.getProfile(this.username);
+
+            this.chatService.getMessagesByContactName(this.username).subscribe(messages => {
                 this.messages = messages;
                 this.initSSE();
             });
@@ -63,7 +72,7 @@ export class ChatComponent implements OnInit {
     }
 
     sendMessage(): void {
-        this.chatService.sendMessage(this.contactName, this.form.value.message).subscribe();
+        this.chatService.sendMessage(this.username, this.form.value.message).subscribe();
     }
 
     messageAlreadyReceived(message: Message): boolean {

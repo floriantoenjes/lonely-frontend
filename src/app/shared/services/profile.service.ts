@@ -14,10 +14,14 @@ export class ProfileService {
     ) { }
 
     saveProfile(profile: Profile): Observable<Profile> {
-        return this.http.post<Profile>(`${environment.resourceBasePath}/profile`, profile);
+        return this.http.post<Profile>(`${environment.resourceBasePath}/profiles`, profile);
     }
 
-    getProfile(): Observable<Profile> {
-        return this.http.get<Profile>(`${environment.resourceBasePath}/profile/my-profile`);
+    getSignedInUserProfile(): Observable<Profile> {
+        return this.http.get<Profile>(`${environment.resourceBasePath}/profiles/my-profile`);
+    }
+
+    getProfile(username: string): Observable<Profile> {
+        return this.http.get<Profile>(`${environment.resourceBasePath}/profiles/by-username/${username}`);
     }
 }

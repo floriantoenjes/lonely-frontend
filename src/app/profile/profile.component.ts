@@ -32,7 +32,7 @@ export class ProfileComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.profileService.getProfile().subscribe((profile: Profile) => {
+        this.profileService.getSignedInUserProfile().subscribe((profile: Profile) => {
             this.form.patchValue(profile);
         });
     }
