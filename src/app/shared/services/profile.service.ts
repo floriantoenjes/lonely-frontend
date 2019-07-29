@@ -24,4 +24,10 @@ export class ProfileService {
     getProfile(username: string): Observable<Profile> {
         return this.http.get<Profile>(`${environment.resourceBasePath}/profiles/by-username/${username}`);
     }
+
+    getProfilesByUsernames(usernames: string[]): Observable<Profile[]> {
+        return this.http.post<Profile[]>(`${environment.resourceBasePath}/profiles/by-usernames`,
+            usernames
+        );
+    }
 }

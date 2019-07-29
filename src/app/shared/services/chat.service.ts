@@ -17,7 +17,11 @@ export class ChatService {
         private authService: AuthService,
         private http: HttpClient
     ) {
-        this.initSSE();
+        this.authService.isUserSignedIn$.subscribe(isSignedIn => {
+            if (isSignedIn) {
+                this.initSSE();
+            }
+        });
     }
 
     getMessagesByContactName(contactName: string): Observable<Message[]> {
